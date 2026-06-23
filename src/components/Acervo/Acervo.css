@@ -1,0 +1,159 @@
+/* Acervo — cream back-catalogue. Editorial header + CTA, then a grid of cards. */
+
+.acervo__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+.acervo__head-text {
+  max-width: 620px;
+}
+
+.acervo__title {
+  margin: 14px 0 18px;
+}
+
+.acervo__cta {
+  flex: none;
+}
+
+/* --- grid ------------------------------------------------------------- */
+.acervo__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* --- card ------------------------------------------------------------- */
+.acervo__card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(255, 253, 247, 1); /* warm near-white raised card; distinct from the cream page */
+  border: 1px solid rgba(176, 125, 78, 0.28);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.acervo__card:hover {
+  transform: translateY(-6px);
+  border-color: var(--copper);
+  box-shadow: var(--shadow-lift);
+}
+
+/* --- thumbnail -------------------------------------------------------- */
+.acervo__thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--pine-700);
+}
+
+.acervo__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.acervo__card:hover .acervo__thumb img {
+  transform: scale(1.05);
+}
+
+.acervo__ep {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+}
+
+.acervo__play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  color: var(--ink);
+  background: var(--gold-grad);
+  box-shadow: 0 8px 26px rgba(8, 30, 21, 0.4);
+  transform: translateY(4px);
+  opacity: 0;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.acervo__play svg {
+  margin-left: 2px; /* optically centre the triangle */
+}
+
+.acervo__card:hover .acervo__play {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* --- body ------------------------------------------------------------- */
+.acervo__body {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.acervo__card-title {
+  font-family: var(--font-display);
+  font-size: 1.32rem;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.acervo__desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* --- responsive ------------------------------------------------------- */
+@media (max-width: 860px) {
+  .acervo__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 44px;
+  }
+
+  .acervo__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .acervo__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .acervo__cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .acervo__play {
+    /* touch devices have no hover — keep the play affordance visible */
+    opacity: 1;
+    transform: none;
+  }
+}

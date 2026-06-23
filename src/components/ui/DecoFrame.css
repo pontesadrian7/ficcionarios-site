@@ -1,0 +1,67 @@
+.deco-frame {
+  position: relative;
+  border: 1px solid var(--line-gold);
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 4vw, 52px);
+  isolation: isolate;
+}
+
+/* inner hairline — the second line of the double border */
+.deco-frame::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  border: 1px solid var(--line-soft);
+  border-radius: calc(var(--radius-lg) - 5px);
+  pointer-events: none;
+}
+
+.deco-frame__corner {
+  position: absolute;
+  width: clamp(32px, 4.5vw, 52px);
+  height: auto;
+  color: var(--champagne);
+  opacity: 0.85;
+  z-index: 2;
+}
+
+.deco-frame__corner--tl {
+  top: 11px;
+  left: 11px;
+}
+
+.deco-frame__corner--tr {
+  top: 11px;
+  right: 11px;
+  transform: scaleX(-1);
+}
+
+.deco-frame__corner--bl {
+  bottom: 11px;
+  left: 11px;
+  transform: scaleY(-1);
+}
+
+.deco-frame__corner--br {
+  bottom: 11px;
+  right: 11px;
+  transform: scale(-1, -1);
+}
+
+.deco-frame__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* On cream surfaces the ornaments read in copper */
+.section--cream .deco-frame {
+  border-color: rgba(176, 125, 78, 0.4);
+}
+
+.section--cream .deco-frame::before {
+  border-color: rgba(14, 42, 30, 0.08);
+}
+
+.section--cream .deco-frame__corner {
+  color: var(--bronze);
+}

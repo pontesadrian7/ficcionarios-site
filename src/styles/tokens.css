@@ -1,0 +1,70 @@
+/* ============================================================
+   FICCIONARIOS — Design Tokens
+   Deep pine green · cream · copper/gold — editorial eco-luxury
+   "Empreendedorismo · Execução na veia · Ficção dos sonhos em realidade"
+   ============================================================ */
+
+:root {
+  /* ---- Pine / forest green scale (backgrounds) ---- */
+  --pine-900: #081e15; /* deepest — overlays, footer base */
+  --pine-800: #0e2a1e; /* page base */
+  --pine-700: #143527; /* primary surface */
+  --pine-600: #1a4030; /* raised surface / cards */
+  --pine-500: #224d39; /* hover surface */
+  --moss-400: #2c5c45;
+
+  /* ---- Warm light scale (cream surfaces & text) ---- */
+  --cream: #f5ecd9; /* primary light / text on dark */
+  --sand: #ece0c7; /* warm secondary light */
+  --greige: #d9ccb2; /* card surfaces on dark, muted */
+  --taupe: #b9a98f; /* muted CTA / secondary accents */
+  --stone: #8c7d66;
+
+  /* ---- Metallic accent (copper / gold — the frame & ornaments) ---- */
+  --bronze: #b07d4e;
+  --copper: #c08552;
+  --champagne: #ddb888;
+  --gold-soft: #e7cda3;
+
+  /* Brushed-gold gradient for accent text / hairlines / chips */
+  --gold-grad: linear-gradient(
+    135deg,
+    #9c6b3f 0%,
+    #d7ab74 32%,
+    #f0d8b0 50%,
+    #cd9c63 70%,
+    #9c6b3f 100%
+  );
+
+  /* ---- Semantic ---- */
+  --ink: #0e2a1e; /* text on cream surfaces */
+  --ink-soft: #51604f; /* muted text on cream surfaces */
+  --text: var(--cream); /* default text on dark */
+  --text-muted: rgba(245, 236, 217, 0.66);
+  --text-faint: rgba(245, 236, 217, 0.44);
+
+  --line: rgba(245, 236, 217, 0.1);
+  --line-soft: rgba(245, 236, 217, 0.06);
+  --line-gold: rgba(221, 184, 136, 0.34);
+
+  /* ---- Layout ---- */
+  --maxw: 1240px;
+  --maxw-narrow: 880px;
+  --gutter: 32px;
+  --radius: 12px; /* site-wide standard radius */
+  --radius-lg: 16px;
+  --radius-pill: 999px; /* pills / buttons / chips stay fully rounded */
+
+  /* ---- Type ----
+     Brand fonts: Bodoni 72 (display, installed on Apple devices) with the
+     near-identical Google "Bodoni Moda" as the loaded web fallback;
+     Gotham (text) with Montserrat as the loaded geometric-sans fallback. */
+  --font-display: 'Bodoni 72', 'Bodoni Moda', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Gotham', 'Montserrat', 'Jost', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ---- Shadows & glows ---- */
+  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 30px 70px rgba(4, 14, 9, 0.55);
+  --shadow-lift: 0 40px 90px rgba(4, 14, 9, 0.6);
+  --glow-warm: 0 0 80px rgba(192, 133, 82, 0.16);
+}

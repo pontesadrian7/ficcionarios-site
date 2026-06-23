@@ -1,0 +1,446 @@
+/* ============================================================
+   FICCIONARIOS — Base & shared utilities
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--pine-800);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+::selection {
+  background: rgba(192, 133, 82, 0.34);
+  color: var(--cream);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--cream);
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.container--narrow {
+  max-width: var(--maxw-narrow);
+}
+
+.section {
+  position: relative;
+  padding: clamp(72px, 9vw, 136px) 0;
+}
+
+.section--tight {
+  padding: clamp(56px, 6vw, 92px) 0;
+}
+
+/* Cream "paper" section — inverts to dark ink text on cream */
+.section--cream {
+  background: var(--cream);
+  color: var(--ink);
+}
+
+.section--cream h1,
+.section--cream h2,
+.section--cream h3,
+.section--cream h4 {
+  color: var(--ink);
+}
+
+/* ---------- Type primitives ---------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: var(--champagne);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--line-gold);
+}
+
+.eyebrow--center::after {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--line-gold);
+}
+
+/* Accent line — site-standard serif italic */
+.script {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1.12;
+  color: var(--champagne);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  letter-spacing: 0;
+}
+
+/* Editorial serif display heading */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+  color: var(--cream);
+  font-size: clamp(2.1rem, 4.8vw, 4rem);
+}
+
+.display em {
+  font-style: italic;
+  color: var(--gold-soft);
+}
+
+/* Brushed-gold text */
+.gold-text {
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.lead {
+  font-size: 1.06rem;
+  line-height: 1.75;
+  color: var(--text-muted);
+  font-weight: 300;
+}
+
+.section--cream .lead {
+  color: var(--ink-soft);
+}
+
+.section-head {
+  max-width: 720px;
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head .display {
+  margin: 18px 0 20px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  padding: 15px 32px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease,
+    background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Solid copper — primary */
+.btn--gold {
+  background: var(--gold-grad);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  color: #221406;
+  border: 1px solid rgba(240, 216, 176, 0.5);
+  box-shadow: 0 14px 38px rgba(176, 125, 78, 0.32),
+    inset 0 1px 0 rgba(255, 245, 230, 0.6);
+}
+
+.btn--gold:hover {
+  transform: translateY(-2px);
+  background-position: 100% 50%;
+  box-shadow: 0 20px 52px rgba(176, 125, 78, 0.46),
+    inset 0 1px 0 rgba(255, 245, 230, 0.7);
+}
+
+/* Solid cream — primary on dark, matches the "19H" / cream chips */
+.btn--cream {
+  background: linear-gradient(180deg, #f7f0e2 0%, #ece0c7 100%);
+  color: var(--ink);
+  border: 1px solid rgba(245, 236, 217, 0.5);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.3);
+}
+
+.btn--cream:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+}
+
+/* Outline — secondary on dark */
+.btn--ghost {
+  color: var(--cream);
+  border: 1px solid var(--line-gold);
+  background: rgba(245, 236, 217, 0.02);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.btn--ghost:hover {
+  transform: translateY(-2px);
+  border-color: var(--champagne);
+  background: rgba(221, 184, 136, 0.08);
+}
+
+/* Outline on cream surfaces */
+.btn--ink {
+  color: var(--ink);
+  border: 1px solid rgba(14, 42, 30, 0.28);
+  background: transparent;
+}
+
+.btn--ink:hover {
+  transform: translateY(-2px);
+  border-color: var(--pine-700);
+  background: rgba(14, 42, 30, 0.05);
+}
+
+.btn--block {
+  width: 100%;
+}
+
+.btn--lg {
+  padding: 18px 40px;
+  font-size: 0.8rem;
+}
+
+/* ---------- Decorative hairline divider ---------- */
+.rule {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--line-gold) 50%,
+    transparent
+  );
+}
+
+.rule--vert {
+  width: 1px;
+  height: auto;
+  background: linear-gradient(180deg, transparent, var(--line-gold), transparent);
+}
+
+/* Small bronze chip / pill label */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line-gold);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  font-weight: 500;
+}
+
+/* Cream "time" badge (e.g. 19H) — dark green text on cream */
+.badge-time {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: var(--cream);
+  color: var(--pine-800);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.86rem;
+  letter-spacing: 0.06em;
+}
+
+/* Check / bullet list */
+.feature-list {
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.feature-list li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.feature-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-grad);
+  box-shadow: 0 0 0 4px rgba(192, 133, 82, 0.12);
+}
+
+.feature-list strong {
+  color: var(--cream);
+  font-weight: 500;
+}
+
+/* ---------- Icon button (socials) ---------- */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line-gold);
+  color: var(--text-muted);
+  transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.25s;
+}
+
+.icon-btn:hover {
+  color: var(--cream);
+  border-color: var(--champagne);
+  background: rgba(221, 184, 136, 0.1);
+  transform: translateY(-2px);
+}
+
+.icon-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* ---------- Film-grain overlay (apply to atmospheric sections) ---------- */
+.grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ---------- Reveal-on-scroll ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+
+  .reveal.in {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Accessibility ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  z-index: 999;
+  background: var(--pine-600);
+  color: var(--cream);
+  padding: 12px 20px;
+  border-radius: 0 0 12px 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}

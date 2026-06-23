@@ -1,0 +1,187 @@
+.sobre {
+  position: relative;
+}
+
+/* ---- Headline block ---- */
+.sobre__head {
+  margin-bottom: clamp(48px, 6vw, 76px);
+}
+
+/* Override base `.section-head .display` (0-2-0) margins so the script/lead
+   spacing below the headline reads as intended. */
+.sobre__head .sobre__title {
+  margin: 22px 0 0;
+  max-width: 16ch;
+}
+
+.sobre__line {
+  display: inline;
+}
+
+.sobre__script {
+  margin: 22px 0 0;
+}
+
+.sobre__lead {
+  max-width: 640px;
+  margin-top: 18px;
+}
+
+/* ---- Pillars grid ---- */
+.sobre__pillars {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.sobre__pillar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 30px;
+  background: var(--pine-700);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.sobre__pillar:hover {
+  border-color: var(--line-gold);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift);
+}
+
+.sobre__pillar-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+/* Gold gradient comes from the shared .gold-text utility. */
+.sobre__index {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.sobre__pillar-mark {
+  width: 22px;
+  height: auto;
+  color: var(--champagne);
+  opacity: 0.55;
+  transition: opacity 0.3s ease;
+}
+
+.sobre__pillar:hover .sobre__pillar-mark {
+  opacity: 0.9;
+}
+
+.sobre__pillar-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.2;
+  color: var(--cream);
+  margin: 0 0 10px;
+}
+
+.sobre__pillar-text {
+  margin: 0;
+  font-size: 0.94rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ---- Stats strip ---- */
+.sobre__rule {
+  margin: 0;
+}
+
+.sobre__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 0;
+  padding: 38px 0;
+}
+
+.sobre__stat {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 18px;
+}
+
+.sobre__stat + .sobre__stat::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 46px;
+  background: var(--line-soft);
+}
+
+.sobre__stat-value {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 4.4vw, 3rem);
+  line-height: 1;
+  margin: 0;
+}
+
+.sobre__stat-label {
+  margin: 12px 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 860px) {
+  .sobre__pillars {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .sobre__pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px 0;
+    padding: 32px 0;
+  }
+
+  /* Vertical rules only between columns; rebuild for the 2x2 grid */
+  .sobre__stat + .sobre__stat::before {
+    display: none;
+  }
+
+  .sobre__stat:nth-child(even)::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 46px;
+    background: var(--line-soft);
+  }
+}

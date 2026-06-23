@@ -1,0 +1,129 @@
+.featured {
+  background: var(--pine-700);
+}
+
+.featured__grid {
+  display: grid;
+  grid-template-columns: 46fr 54fr;
+  align-items: center;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+/* ---- Left: editorial text column ---- */
+.featured__title {
+  margin-top: 22px;
+}
+
+.featured__body {
+  margin-top: 22px;
+  max-width: 46ch;
+}
+
+.featured__cta {
+  margin-top: 36px;
+}
+
+/* ---- Right: clickable thumbnail card ---- */
+.featured__media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line-gold);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.4s ease;
+}
+
+.featured__media:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lift), var(--glow-warm);
+}
+
+.featured__thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.featured__media:hover .featured__thumb {
+  transform: scale(1.04);
+}
+
+/* Dark gradient veil for legibility + depth */
+.featured__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 60% at 50% 50%, transparent 30%, rgba(8, 30, 21, 0.35) 100%),
+    linear-gradient(180deg, rgba(8, 30, 21, 0.1) 0%, rgba(8, 30, 21, 0.6) 100%);
+}
+
+/* Centered copper play button */
+.featured__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: clamp(58px, 7vw, 76px);
+  height: clamp(58px, 7vw, 76px);
+  border-radius: var(--radius-pill);
+  background: var(--gold-grad);
+  color: var(--pine-900);
+  box-shadow: 0 10px 30px rgba(8, 30, 21, 0.45), var(--glow-warm);
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.featured__play svg {
+  margin-left: 3px; /* optically center the play triangle */
+}
+
+.featured__media:hover .featured__play {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .featured__media,
+  .featured__thumb,
+  .featured__play {
+    transition: none;
+  }
+
+  .featured__media:hover {
+    transform: none;
+  }
+
+  .featured__media:hover .featured__thumb {
+    transform: none;
+  }
+
+  /* keep the absolutely-centered play button put — no hover scale */
+  .featured__media:hover .featured__play {
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 860px) {
+  .featured__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .featured__body {
+    max-width: 60ch;
+  }
+}
+
+@media (max-width: 600px) {
+  .featured__cta {
+    width: 100%;
+  }
+}

@@ -1,0 +1,125 @@
+.momentos {
+  background: var(--pine-700);
+  position: relative;
+  overflow: hidden;
+}
+
+.momentos .section-head {
+  margin-bottom: 56px;
+}
+
+/* Curated mosaic — varied heights via row-span, dense packing keeps it tidy */
+.momentos__mosaic {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 150px;
+  grid-auto-flow: dense;
+  gap: 18px;
+}
+
+/* A single decorative tile */
+.momentos__tile {
+  position: relative;
+  grid-row: span var(--tile-span, 1);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  padding: 22px;
+  border: 1px solid var(--line-gold);
+  border-radius: var(--radius-lg);
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(192, 133, 82, 0.06) 0%, transparent 55%),
+    linear-gradient(160deg, var(--pine-600) 0%, var(--pine-800) 100%);
+  box-shadow: var(--shadow-card);
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.momentos__tile:hover {
+  transform: translateY(-6px);
+  border-color: rgba(221, 184, 136, 0.55);
+  box-shadow: var(--shadow-lift), 0 0 38px rgba(192, 133, 82, 0.16);
+}
+
+/* Faint king watermark drifting in the corner of each tile */
+.momentos__watermark {
+  position: absolute;
+  top: 50%;
+  right: -14%;
+  transform: translateY(-50%) rotate(-6deg);
+  width: clamp(120px, 60%, 220px);
+  color: var(--moss-400);
+  opacity: 0.16;
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.momentos__watermark svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.momentos__tile:hover .momentos__watermark {
+  opacity: 0.26;
+  transform: translateY(-50%) rotate(-6deg) scale(1.05);
+}
+
+/* Pinned bottom-left label */
+.momentos__label {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  transition: color 0.4s ease;
+}
+
+.momentos__tile:hover .momentos__label {
+  color: var(--champagne);
+}
+
+.momentos__cta {
+  display: flex;
+  justify-content: center;
+  margin-top: 44px;
+}
+
+/* Collapse to a tidy 2-column mosaic */
+@media (max-width: 860px) {
+  .momentos .section-head {
+    margin-bottom: 44px;
+  }
+
+  .momentos__mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 140px;
+  }
+}
+
+/* Single clean column on the smallest screens */
+@media (max-width: 600px) {
+  .momentos__mosaic {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 14px;
+  }
+
+  /* Spans are meaningless in one column — give every tile an even, calm height */
+  .momentos__tile {
+    grid-row: auto;
+    min-height: 132px;
+    padding: 18px;
+  }
+
+  .momentos__cta .btn {
+    width: 100%;
+  }
+}
