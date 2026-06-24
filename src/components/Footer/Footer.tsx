@@ -1,4 +1,5 @@
 import { Youtube, Instagram, Linkedin, Link } from 'lucide-react'
+import KingMark from '../ui/KingMark'
 import { footer, site, nav } from '../../data/content'
 import './Footer.css'
 
@@ -15,13 +16,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer__brand reveal">
             <a href="#top" className="footer__mark-link" aria-label={site.fullName}>
-              <img
-                src="/fic-logo.svg"
-                alt={site.fullName}
-                className="footer__logo"
-                width="124"
-                height="121"
-              />
+              <KingMark className="footer__mark" variant="outline" title="" />
+              <span className="footer__wordmark">
+                {site.name}
+                <small>Podcast</small>
+              </span>
             </a>
 
             <p className="footer__tagline">{footer.tagline}</p>

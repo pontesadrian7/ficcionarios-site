@@ -2,6 +2,17 @@
    FICCIONARIOS — Base & shared utilities
    ============================================================ */
 
+/* Self-hosted brand display font — Bodoni 72 Book (the only display font).
+   Declared across the 400–700 range so heading weights render in the real
+   Book face (no faux-bold). Headings are upright Book — no italic. */
+@font-face {
+  font-family: 'Bodoni 72';
+  src: url('/fonts/bodoni-72-book.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -133,25 +144,25 @@ h4 {
 .script {
   font-family: var(--font-display);
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   line-height: 1.12;
   color: var(--champagne);
   font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-  letter-spacing: 0;
+  letter-spacing: -0.02em;
 }
 
-/* Editorial serif display heading */
+/* Editorial serif display heading — Bodoni 72 Book, tight tracking */
 .display {
   font-family: var(--font-display);
-  font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: -0.015em;
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   color: var(--cream);
   font-size: clamp(2.1rem, 4.8vw, 4rem);
 }
 
 .display em {
-  font-style: italic;
+  font-style: normal;
   color: var(--gold-soft);
 }
 
@@ -224,15 +235,13 @@ h4 {
   background-position: 0% 50%;
   color: #221406;
   border: 1px solid rgba(240, 216, 176, 0.5);
-  box-shadow: 0 14px 38px rgba(176, 125, 78, 0.32),
-    inset 0 1px 0 rgba(255, 245, 230, 0.6);
+  box-shadow: 0 10px 24px rgba(5, 15, 12, 0.3);
 }
 
 .btn--gold:hover {
   transform: translateY(-2px);
   background-position: 100% 50%;
-  box-shadow: 0 20px 52px rgba(176, 125, 78, 0.46),
-    inset 0 1px 0 rgba(255, 245, 230, 0.7);
+  box-shadow: 0 14px 30px rgba(5, 15, 12, 0.36);
 }
 
 /* Solid cream — primary on dark, matches the "19H" / cream chips */
@@ -390,15 +399,9 @@ h4 {
 }
 
 /* ---------- Film-grain overlay (apply to atmospheric sections) ---------- */
+/* film grain disabled — flat, glow-free finish */
 .grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.5;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  content: none;
 }
 
 /* ---------- Reveal-on-scroll ---------- */

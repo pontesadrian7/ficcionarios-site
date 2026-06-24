@@ -67,7 +67,7 @@
 /* Gold gradient comes from the shared .gold-text utility. */
 .sobre__index {
   font-family: var(--font-display);
-  font-style: italic;
+  font-style: normal;
   font-size: 1.7rem;
   line-height: 1;
 }

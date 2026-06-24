@@ -1,12 +1,15 @@
 import { Instagram, ArrowUpRight } from 'lucide-react'
-import Avatar from '../ui/Avatar'
 import { convidados } from '../../data/content'
 import './Convidados.css'
 
+/** Photo path for a guest, derived from the @handle. */
+const photoOf = (handle: string) => `/convidados/${handle.replace('@', '')}.jpg`
+
 /**
  * Convidados — the roll-call of guests who have already sat at the table.
- * A left-aligned section head with a "Ver todos" link on the right, over a
- * dense responsive grid of monogram cards that each link out to Instagram.
+ * A left-aligned section head with a "Ver todos" link, over a responsive grid
+ * of portrait photo cards (each linking to Instagram), in the editorial style
+ * of the reference: full-bleed photo + name and handle over a pine gradient.
  */
 export default function Convidados() {
   return (
@@ -44,13 +47,19 @@ export default function Convidados() {
                 rel="noopener noreferrer"
                 aria-label={`${guest.name} no Instagram`}
               >
-                <span className="convidados__avatar">
-                  <Avatar name={guest.name} />
-                </span>
-                <span className="convidados__name">{guest.name}</span>
-                <span className="convidados__handle">
-                  <Instagram size={13} strokeWidth={1.8} aria-hidden="true" />
-                  {guest.handle}
+                <img
+                  className="convidados__photo"
+                  src={photoOf(guest.handle)}
+                  alt={guest.name}
+                  loading="lazy"
+                />
+                <span className="convidados__overlay" aria-hidden="true" />
+                <span className="convidados__info">
+                  <span className="convidados__name">{guest.name}</span>
+                  <span className="convidados__handle">
+                    <Instagram size={13} strokeWidth={1.8} aria-hidden="true" />
+                    {guest.handle}
+                  </span>
                 </span>
               </a>
             </li>

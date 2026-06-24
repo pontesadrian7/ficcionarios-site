@@ -9,35 +9,30 @@
   isolation: isolate;
 }
 
-/* Large faded king watermark behind the frame */
-.hero__watermark {
+/* Studio photo backdrop */
+.hero__bg {
   position: absolute;
+  inset: 0;
   z-index: -2;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -48%);
-  width: clamp(320px, 50vw, 620px);
-  color: var(--moss-400);
-  opacity: 0.14;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.5));
-  pointer-events: none;
-}
-
-.hero__watermark svg {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
 }
 
-/* Warm copper glow + bottom fade */
+/* Deep-green wash over the photo for legibility + bottom blend */
 .hero__glow {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background:
-    radial-gradient(60% 44% at 50% 8%, rgba(192, 133, 82, 0.2) 0%, transparent 60%),
-    radial-gradient(80% 60% at 50% 50%, transparent 40%, rgba(6, 22, 15, 0.7) 100%),
-    linear-gradient(180deg, transparent 60%, var(--pine-900) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(13, 31, 27, 0.66) 0%,
+    rgba(13, 31, 27, 0.52) 42%,
+    rgba(13, 31, 27, 0.72) 78%,
+    var(--pine-900) 100%
+  );
 }
 
 .hero__container {
@@ -52,9 +47,9 @@
   max-width: 920px;
   width: 100%;
   text-align: center;
-  background: linear-gradient(180deg, rgba(20, 53, 39, 0.5), rgba(8, 30, 21, 0.5));
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  background: linear-gradient(180deg, rgba(21, 48, 43, 0.62), rgba(13, 31, 27, 0.7));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
   box-shadow: var(--shadow-card);
 }
 
@@ -71,10 +66,10 @@
 
 .hero__title {
   font-family: var(--font-display);
-  font-weight: 500;
+  font-weight: 400;
   font-size: clamp(2.9rem, 8vw, 5.8rem);
-  line-height: 0.98;
-  letter-spacing: -0.02em;
+  line-height: 0.96;
+  letter-spacing: -0.03em;
   margin: 0;
 }
 
@@ -85,8 +80,8 @@
 
 .hero__title-accent {
   display: block;
-  font-style: italic;
-  font-weight: 600;
+  font-style: normal;
+  font-weight: 400;
   background: var(--gold-grad);
   -webkit-background-clip: text;
   background-clip: text;

@@ -1,19 +1,16 @@
 import { Youtube, ArrowUpRight, ChevronDown } from 'lucide-react'
-import KingMark from '../ui/KingMark'
 import DecoFrame from '../ui/DecoFrame'
 import { hero } from '../../data/content'
 import './Hero.css'
 
 /**
- * Hero — a centered editorial panel inside the brand's signature deco frame,
- * over a deep pine field with a large faded king watermark and a copper glow.
+ * Hero — a centered editorial panel inside the brand's deco frame, over a photo
+ * of the Ficcionarios studio with a deep-green wash for legibility.
  */
 export default function Hero() {
   return (
-    <section className="hero grain" id="top">
-      <span className="hero__watermark" aria-hidden="true">
-        <KingMark title="" />
-      </span>
+    <section className="hero" id="top">
+      <img className="hero__bg" src="/hero-studio.jpg" alt="" aria-hidden="true" />
       <div className="hero__glow" aria-hidden="true" />
 
       <div className="container hero__container">

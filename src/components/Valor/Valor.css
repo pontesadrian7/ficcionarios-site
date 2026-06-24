@@ -5,16 +5,9 @@
   isolation: isolate;
 }
 
-/* Warm copper glow, centered, fading into the deep pine field */
+/* glow removed — flat deep pine field */
 .valor::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(52% 60% at 50% 50%, rgba(192, 133, 82, 0.18) 0%, transparent 62%),
-    radial-gradient(90% 80% at 50% 50%, transparent 45%, rgba(6, 22, 15, 0.6) 100%);
+  content: none;
 }
 
 .valor__container {

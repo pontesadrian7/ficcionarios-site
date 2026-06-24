@@ -14,7 +14,7 @@ export default function Nav() {
     <header className={`nav ${scrolled ? 'is-scrolled' : ''} ${open ? 'is-open' : ''}`}>
       <div className="container nav__inner">
         <a href="#top" className="nav__brand" onClick={close} aria-label={site.fullName}>
-          <KingMark className="nav__mark" />
+          <KingMark className="nav__mark" variant="outline" />
           <span className="nav__wordmark">
             Ficcionarios
             <small>Podcast</small>

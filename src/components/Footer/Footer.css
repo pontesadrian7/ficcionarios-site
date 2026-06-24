@@ -18,15 +18,37 @@
   gap: 14px;
 }
 
-.footer__logo {
-  width: clamp(104px, 11vw, 132px);
-  height: auto;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+.footer__mark {
+  height: 46px;
+  width: auto;
+  color: var(--cream);
+  transition: transform 0.25s, color 0.25s;
 }
 
-.footer__mark-link:hover .footer__logo {
-  transform: translateY(-2px);
-  opacity: 0.88;
+.footer__mark-link:hover .footer__mark {
+  transform: translateY(-1px);
+  color: var(--gold-soft);
+}
+
+.footer__wordmark {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 0.96;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+}
+
+.footer__wordmark small {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 0.52rem;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-top: 4px;
 }
 
 .footer__tagline {
